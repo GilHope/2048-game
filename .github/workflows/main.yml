@@ -48,4 +48,4 @@ jobs:
         environment_name: 2048-Game-Environment
         version_label: ${{ github.sha }}
         region: us-east-1
-        file: application.zip
+        deployment_package: application.zip
