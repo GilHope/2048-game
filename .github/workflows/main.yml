@@ -36,6 +36,9 @@ jobs:
     - name: Apply Terraform
       run: terraform apply -auto-approve
 
+    - name: Create deployment package
+      run: zip -r application.zip .
+
     - name: Deploy to Elastic Beanstalk
       uses: einaregilsson/beanstalk-deploy@v14
       with:
@@ -45,4 +48,4 @@ jobs:
         environment_name: 2048-Game-Environment
         version_label: ${{ github.sha }}
         region: us-east-1
-        deployment_package: .
+        file: application.zip
