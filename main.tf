@@ -31,6 +31,29 @@ resource "aws_iam_role" "instance_role" {
   EOF
 }
 
+resource "aws_iam_role_policy" "eb_policy" {
+  name = "Elastic_Beanstalk_Permissions"
+  role = aws_iam_role.instance_role.id
+
+  policy = <<-EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:PutMetricData",
+        "elasticbeanstalk:RetrieveEnvironmentInfo"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}
+
+
+
 resource "aws_iam_instance_profile" "instance_profile" {
   name = "elastic_beanstalk_instance_profile"
   role = aws_iam_role.instance_role.name
