@@ -1,3 +1,12 @@
+# The Dockerfile in this project sets up the game application with the following steps:
+# - It uses the Ubuntu 22.04 base image.
+# - Installs Nginx, zip, and curl packages.
+# - Configures Nginx to serve the 2048 game.
+# - Downloads the 2048 game source code from GitHub.
+# - Unzips and moves the game files to the appropriate location.
+# - Exposes port 80 for accessing the game.
+# - Starts Nginx as the main process.
+
 FROM ubuntu:22.04
 
 RUN apt-get update
